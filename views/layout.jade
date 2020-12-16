@@ -1,0 +1,88 @@
+doctype html
+html
+    head
+        
+        //metadata
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(name='description', content='kuttikaattildotcom Online')
+        meta(name='author', content='kuttikaattildotcom. All rights Reserved')
+
+        //title
+        title= title + ' | kuttikaattildotcom'
+
+        //stylesheet
+        link(rel='stylesheet', href='/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/css/font-awesome.min.css')
+        link(rel='stylesheet', href='/css/main.css')
+        link(rel='stylesheet', href='/css/responsive.css')
+
+        //favicon
+        link(rel='shortcut icon', href='/img/ico/favicon.ico')
+
+    body
+        //header
+        header#header
+
+            //header-middle
+            .header-middle
+                .container
+                    .row
+                        .col-sm-4
+                            .logo.pull-left
+                                a(href='/')
+                                    img(src='/img/logo.png', alt='Kuttikaattil Logo')
+                                    //h1
+                                        span a
+                                        | Store
+                                        i.fa.fa-shopping-cart
+                        .col-sm-8
+
+            ///header-middle
+
+            //header-bottom
+            .header-bottom
+                .container
+                    .row
+                        .col-sm-9
+                            .navbar-header
+                                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                                    span.sr-only Toggle navigation
+                            .mainmenu.pull-left
+                                ul.nav.navbar-nav.collapse.navbar-collapse
+                                    li
+                                        a(class={active: currentUrl === '/'}, href='/')
+                                            | Home
+                                    li
+                                        a(class={active: currentUrl === '/cat/all'}, href='/cat/all')
+                                            | Products
+                                    -var orderCus = '   Account'
+                                    -var link = '/sign-in'
+                                    if customer
+                                        -orderCus='   ' + customer.FullName
+                                        -link='/usr/'
+                                    li
+                                        a(href=link)
+                                            i.fa.fa-user
+                                            =orderCus
+                                    li
+                                        a(href='/cart')
+                                            i.fa.fa-shopping-cart
+                                            |  Cart
+                                    //li
+                                    //    a(href='/checkout')
+                                    //        i.fa.fa-money
+                                    //        |  Checkout
+                                    if customer
+                                        li
+                                            a(href='/sign-out')
+                                                i.fa.fa-sign-out
+                                                |  Logout
+            ///header-bottom
+        ///header
+
+        block content
+        script(src='/js/jquery-2.1.4.min.js')
+        script(src='/js/bootstrap.min.js')
+        script(src='/js/jquery.scrollUp.min.js')
+        script(src='/js/main.js')
